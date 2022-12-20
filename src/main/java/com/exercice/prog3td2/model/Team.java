@@ -7,7 +7,7 @@ public class Team {
         private List<Team> TeamList;
 
         public List<Team> getTeamList() {
-            ArrayList<Team> TeamList;
+            ArrayList<Team> TeamList = null;
             if(TeamList == null) {
                 TeamList = new ArrayList<>();
             }

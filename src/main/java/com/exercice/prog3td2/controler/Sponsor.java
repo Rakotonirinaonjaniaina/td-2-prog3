@@ -1,23 +1,40 @@
 package com.exercice.prog3td2.controler;
 
-public class Sponsor {
-        private long id;
-        private String Name;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-        public Long getId() {
-            return id;
-        }
-        public void setId(Long id) {
-            this.id = id;
-        }
-        public String getName() {
-            return Name;
-        }
-        public void setName(String Name) {
-            this.Name = Name;
-        }
-    @Override
-    public String toString() {
-        return "Team [id=" + id + ", Name=" + "Name=";
+import java.util.List;
+
+@RestController
+public class Sponsor {
+    @Autowired
+    private com.exercice.prog3td2.controler.Sponsor Sponsor;
+    @GetMapping("/Sponsor")
+    public List<Sponsor> getSponsor()
+    {
+        return this.Sponsor.getSponsor();
+    }
+
+    @GetMapping("/Sponsor/{SponsorId}")
+    public Sponsor getSponsor(@PathVariable String SponsorId)
+    {
+        return this.Sponsor.getSponsor(SponsorId);
+    }
+    @PostMapping("/Sponsor")
+    public Team addTeam(@RequestBody Sponsor Sponsor)
+    {
+        return this.Sponsor.addTeam(Sponsor);
+    }
+    @PutMapping("/Sponsor/{Sponsor}")
+    public Sponsor updateSponsor(@PathVariable String SponsorId,@RequestBody Sponsor Sponsor)
+    {
+        return this.Sponsor.updateSponsor((SponsorId),Sponsor);
+    }
+
+    @DeleteMapping("/Sponsor/{SponsorId}")
+    public List<Sponsor> deleteSponsor(@PathVariable String SponsorId)
+    {
+        return (List<Sponsor>) this.Sponsor.deleteSponsor(SponsorId);
+
     }
 }
